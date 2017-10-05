@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import {Dimensions, Text, StyleSheet} from 'react-native';
+import PropTypes from 'prop-types'
 const {width, height} = Dimensions.get('window');
 const flattenStyle = StyleSheet.flatten;
 const realWidth = height > width ? width : height;
