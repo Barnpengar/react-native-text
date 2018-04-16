@@ -10,7 +10,7 @@ const ScalableText = ({style, children, onlyScaleUp, ...props}) => {
   var scaledFontSize = Math.round(fontSize * realWidth / 320)
   if (scaledFontSize < fontSize) scaledFontSize = fontSize
   return (
-    <Text style={[style, {fontSize: scaledFontSize}]} {...props}>
+    <Text style={[style, {fontSize: scaledFontSize, lineHeight: scaledFontSize + 3}]} {...props}>
       {children}
     </Text>
   );
