@@ -6,9 +6,11 @@ const flattenStyle = StyleSheet.flatten;
 const realWidth = height > width ? width : height;
 
 const ScalableText = ({style, children, onlyScaleUp, ...props}) => {
-  const fontSize = flattenStyle(style).fontSize || 14;
+  const fontSize = flattenStyle(style).fontSize || 14
+  let maxSize = fontSize * 1.5
   var scaledFontSize = Math.round(fontSize * realWidth / 320)
   if (scaledFontSize < fontSize) scaledFontSize = fontSize
+  if (scaledFontSize > maxSize) scaledFontSize = maxSize
   return (
     <Text style={[style, {fontSize: scaledFontSize, lineHeight: scaledFontSize + 3}]} {...props}>
       {children}
