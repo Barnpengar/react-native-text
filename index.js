@@ -8,11 +8,14 @@ const realWidth = height > width ? width : height;
 const ScalableText = ({style, children, onlyScaleUp, ...props}) => {
   const fontSize = flattenStyle(style).fontSize || 14
   let maxSize = fontSize * 1.5
+  // Default line height is 120% of the font size.
+  const lineHeight = flattenStyle(style).lineHeight || fontSize * 1.2
+  const scaledLineHeight = Math.round(lineHeight * realWidth / 320)
   var scaledFontSize = Math.round(fontSize * realWidth / 320)
   if (scaledFontSize < fontSize) scaledFontSize = fontSize
   if (scaledFontSize > maxSize) scaledFontSize = maxSize
   return (
-    <Text style={[style, {fontSize: scaledFontSize, lineHeight: scaledFontSize + 3}]} {...props}>
+    <Text style={[style, {fontSize: scaledFontSize, lineHeight: scaledLineHeight}]} {...props}>
       {children}
     </Text>
   );
