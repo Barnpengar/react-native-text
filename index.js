@@ -15,7 +15,7 @@ const ScalableText = ({style, children, onlyScaleUp, ...props}) => {
   if (scaledFontSize > maxSize) scaledFontSize = maxSize
   // Default line height is 120% of the font size.
   const lineHeightProp = flattenStyle(style).lineHeight
-  const scaledLineHeight = !!lineHeightProp ? lineHeightProp * scaleRatio : scaledFontSize * 1.2
+  const scaledLineHeight = !!lineHeightProp ? lineHeightProp * scaleRatio : scaledFontSize + 3
   return (
     <Text style={[style, {fontSize: scaledFontSize, lineHeight: scaledLineHeight}]} {...props}>
       {children}
