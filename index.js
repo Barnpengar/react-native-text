@@ -7,7 +7,7 @@ const realWidth = height > width ? width : height;
 
 
 const withScalableText = (Component) => {
-  return ({style, children, onlyScaleUp, allowFontScaling, ...props}) => {
+  return ({style, children, onlyScaleUp, allowFontScaling, forwardedRef, ...props}) => {
     const fontSize = flattenStyle(style).fontSize || 14
     let maxSize = fontSize * 1.5
     const scaleRatio = realWidth / 320
@@ -17,7 +17,7 @@ const withScalableText = (Component) => {
     const lineHeightProp = flattenStyle(style).lineHeight
     const scaledLineHeight = !!lineHeightProp ? lineHeightProp * scaleRatio : scaledFontSize + 5
     return (
-      <Component style={[style, {fontSize: scaledFontSize, lineHeight: scaledLineHeight}]} allowFontScaling={allowFontScaling} {...props}>
+      <Component style={[style, {fontSize: scaledFontSize, lineHeight: scaledLineHeight}]} allowFontScaling={allowFontScaling} ref={forwardedRef} {...props}>
         {children}
       </Component>
     );
