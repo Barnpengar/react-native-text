@@ -17,7 +17,7 @@ const withScalableText = (Component) => {
     const lineHeightProp = flattenStyle(style).lineHeight
     const scaledLineHeight = !!lineHeightProp ? lineHeightProp * scaleRatio : scaledFontSize + 5
     return (
-      <Component style={[style, {fontSize: scaledFontSize, lineHeight: scaledLineHeight}]} allowFontScaling={allowFontScaling} ref={forwardedRef} {...props}>
+      <Component style={[style, {fontSize: scaledFontSize, lineHeight: scaledLineHeight}]} allowFontScaling={false} ref={forwardedRef} {...props}>
         {children}
       </Component>
     );
