@@ -1,6 +1,5 @@
 import React from 'react';
 import {Dimensions, Text, StyleSheet} from 'react-native';
-import PropTypes from 'prop-types'
 const {width, height} = Dimensions.get('window');
 const flattenStyle = StyleSheet.flatten;
 const realWidth = height > width ? width : height;
@@ -25,16 +24,6 @@ const withScalableText = (Component) => {
 }
 
 const ScalableText = withScalableText(Text)
-
-ScalableText.propTypes = {
-  style: Text.propTypes.style,
-  children: PropTypes.node
-};
-
-ScalableText.defaultProps = {
-  onlyScaleUp: false,
-  style: {}
-};
 
 export default ScalableText;
 export {withScalableText}
